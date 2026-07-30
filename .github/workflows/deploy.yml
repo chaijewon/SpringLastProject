@@ -16,7 +16,7 @@ jobs:
           uses: actions/checkout@v4
         
         - name: Maven Build
-          run: ./mvnw clean package -DskipTests
+          run: mvn clean package -DskipTests
 
         - name: Stop Tomcat
           run: |
