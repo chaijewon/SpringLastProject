@@ -20,6 +20,13 @@ h3 {
    <div class="container">
     <div class="row">
      <h3>묻고 답하기</h3>
+     <table class="table">
+       <tr>
+        <td>
+         <a href="../board/insert.do" class="btn btn-sm btn-primary">등록</a>
+        </td>
+       </tr>
+     </table>
      <table class="table table-hover">
        <tr class="success">
          <th width=10% class="text-center">번호</th>
@@ -39,7 +46,7 @@ h3 {
           </c:forEach>
           <img src="../board/re_icon.png">
          </c:if>
-         ${vo.subject }
+         <a href="../board/detail.do?no=${vo.no }">${vo.subject }</a>
          &nbsp; <c:if test="${vo.dbday==today }">
                  <sup><img src="../board/new.gif"></sup>
                 </c:if>
