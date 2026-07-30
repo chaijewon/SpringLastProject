@@ -31,8 +31,9 @@ jobs:
              cp target/*.war /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
         - name: Tomcat start
           run: |
-             nohup /home/sist/apache-tomcat-9.0.120/bin/startup.sh
+             /home/sist/apache-tomcat-9.0.120/bin/startup.sh
              sleep 5
+             ps -ef | grep tomcat
              
           
 
