@@ -23,33 +23,26 @@ public class FoodController {
   {
 	  this.fService=fService;
   }*/
-  /*
-   *   1. 전송 => ?변수
-   *   2. 커맨드 객체 => VO (회원가입 , 회원수정 , 글쓰기)
-   *   3. 내장 객체 
-   *      1) HttpSession 
-   *      2) Cookie => 저장 : response 
-   *                   읽기 : request 
-   */
+ 
   @GetMapping("food/detail_before.do")
   public String food_detail_before(int no,
 		  HttpServletResponse response,
 		  RedirectAttributes ra)
   {
-	  // 쿠키 생성 
+	  
 	  Cookie cookie=new Cookie("food_"+no, String.valueOf(no));
-	  //                       String , String => 문자열만 저장이 가능 
+	  //                       String , String => 
 	  cookie.setPath("/");
 	  cookie.setMaxAge(60*60*24);
 	  response.addCookie(cookie);
 	  ra.addAttribute("no", no); // ?no=1
 	  return "redirect:../food/detail.do";
-	  // => 조회수 증가 / 쿠키 저장된 값 출력 (back()(X)) 
+	  // 
   }
   @GetMapping("food/detail.do")
   /*
    *   <form> => get / post
-   *   나머지 태그는 get
+   * 
    *   location.href => get 
    *   redirect: => get
    *   

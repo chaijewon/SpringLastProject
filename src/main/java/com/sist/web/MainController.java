@@ -51,7 +51,7 @@ public class MainController {
 	   Cookie[] cookies=request.getCookies();
 	   if(cookies!=null)
 	   {
-		   // 최신순 
+		   
 		   for(int i=cookies.length-1;i>=0;i--)
 		   {
 			   if(cookies[i].getName().startsWith("food_"))
@@ -69,12 +69,7 @@ public class MainController {
 	   }
 	   model.addAttribute("cList", cList);
 	   model.addAttribute("size", cList.size());
-	   /*
-	    *   내장객체의 사용처 
-	    *     request/response => cookie/ fileupload
-	    *     session => 보안 / 회원 관련 
-	    *     RedirectAttributes : 이미 있는 화면으로 이동 
-	    */
+	   
 	   return "main/main";
    }
 }
