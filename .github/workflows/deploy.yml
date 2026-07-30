@@ -10,7 +10,7 @@ jobs:
   #모든 명령의 기본 작업 디렉토리 설정
     defaults:
       run:
-        working-directory: SpringLastProject
+        working-directory: .
     steps:
         - name: Checkout
           uses: actions/checkout@v4
