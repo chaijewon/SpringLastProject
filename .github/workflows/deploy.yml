@@ -10,7 +10,7 @@ jobs:
   #모든 명령의 기본 작업 디렉토리 설정
     defaults:
       run:
-        working-directory: SpringLastProject
+        working-directory: .
     steps:
         - name: Checkout
           uses: actions/checkout@v4
@@ -20,18 +20,18 @@ jobs:
 
         - name: Stop Tomcat
           run: |
-             /home/sist/apache-tomcat-9.0.*/bin/shutdown.sh || true
+             /home/sist/apache-tomcat-9.0.120/bin/shutdown.sh || true
              sleep 3
         - name: Remove Old war
           run: |
-             rm -rf /home/sist/apache-tomcat-9.0.*/webapps/SpringLastProject.war
-             rm -rf /home/sist/apache-tomcat-9.0.*/webapps/SpringLastProject
+             rm -rf /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
+             rm -rf /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject
         - name: Deploy War
           run: |
-             cp target/*.war /home/sist/apache-tomcat-9.0.*/webapps/SpringLastProject.war
+             cp target/*.war /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
         - name: Tomcat start
           run: |
-             nohup /home/sist/apache-tomcat-9.0.*/bin/startup.sh
+             nohup /home/sist/apache-tomcat-9.0.120/bin/startup.sh
              sleep 5
              
           
