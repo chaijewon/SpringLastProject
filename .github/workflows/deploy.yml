@@ -22,6 +22,7 @@ jobs:
           run: |
              /home/sist/apache-tomcat-9.0.120/bin/shutdown.sh || true
              sleep 3
+             
         - name: Remove Old war
           run: |
              rm -rf /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
@@ -31,8 +32,9 @@ jobs:
              cp target/*.war /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
         - name: Tomcat start
           run: |
-             nohup /home/sist/apache-tomcat-9.0.120/bin/startup.sh
+             setsid /home/sist/apache-tomcat-9.0.120/bin/startup.sh > /dev/null 2>&1 &
              sleep 5
+             ps -ef | grep tomcat
              
           
 
