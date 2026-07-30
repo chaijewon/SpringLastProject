@@ -24,7 +24,7 @@
             <img src="${vo.poster }" style="width: 290px;height: 250px">
           </td>
           <td colspan="2">
-            <h3>${vo.name }&nbsp;<span style="color:orange;">${vo.score }</span></h3>
+            <h3 style="color:blue">${vo.name }&nbsp;<span style="color:orange;">${vo.score }</span></h3>
           </td>
         </tr>
         <tr>
