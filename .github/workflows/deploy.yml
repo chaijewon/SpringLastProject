@@ -22,6 +22,8 @@ jobs:
           run: |
              /home/sist/apache-tomcat-9.0.120/bin/shutdown.sh || true
              sleep 3
+             PID=$(pgrep -f apache-tomcat || true) 
+             [ -n "$PID" ] && kill -9 $PID || true
         - name: Remove Old war
           run: |
              rm -rf /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
@@ -31,7 +33,7 @@ jobs:
              cp target/*.war /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
         - name: Tomcat start
           run: |
-             /home/sist/apache-tomcat-9.0.120/bin/startup.sh
+             nohup /home/sist/apache-tomcat-9.0.120/bin/startup.sh
              sleep 5
              ps -ef | grep tomcat
              
