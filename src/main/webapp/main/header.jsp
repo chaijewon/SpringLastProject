@@ -17,7 +17,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">스토어</a></li>
-      <li><a href="#">답변형 게시판</a></li>
+      <li><a href="../board/list.do">답변형 게시판</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
