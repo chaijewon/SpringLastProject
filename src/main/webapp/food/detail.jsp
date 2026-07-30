@@ -11,6 +11,7 @@
    width: 960px;
 }
 </style>
+
 </head>
 <body>
   <div class="container">
