@@ -32,7 +32,7 @@ jobs:
              cp target/*.war /home/sist/apache-tomcat-9.0.120/webapps/SpringLastProject.war
         - name: Tomcat start
           run: |
-             setsid /home/sist/apache-tomcat-9.0.120/bin/startup.sh > /dev/null 2>&1 &
+             sudo systemd-run --scope --user /home/sist/apache-tomcat-9.0.120/bin/startup.sh
              sleep 5
              ps -ef | grep tomcat
              
