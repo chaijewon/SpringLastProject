@@ -4,6 +4,7 @@ import java.util.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -113,6 +114,43 @@ public class BoardServiceImpl implements BoardService{
 		 +"WHERE no=#{no}")
 		 */
 		mapper.boardDepthIncrement(pno);
+	}
+    /*
+     *                         no  gi  gs  gt root depth
+     *      AAAAAA             1    1  0    0  0     1
+     *        = BBBBB          2    1  1    1  1     0
+     *        = CCCCC          3    1  2    1  1     1
+     *           = DDDDDD      4    1  3    2  3     0
+     *      KKKKK              5    2  0    0  0     0
+     */
+	@Override
+	@Transactional
+	public boolean boardDelete(int no, String pwd) {
+		// TODO Auto-generated method stub
+		boolean bCheck=false;
+		BoardVO vo=mapper.boardInfoData(no);
+		String db_pwd=mapper.boardGetPassword(no);
+		if(db_pwd.equals(pwd))
+		{
+			bCheck=true;
+			if(vo.getDepth()==0)
+			{
+				mapper.boardDelete(no);
+			}
+			else
+			{
+			    BoardVO bvo=new BoardVO();
+			    bvo.setContent("관리자 삭제한 게시물입니다");
+			    bvo.setSubject("관리자 삭제한 게시물입니다");
+			    bvo.setNo(no);
+			    
+			    mapper.boardMsgUpdate(bvo);
+			}
+			
+			mapper.boardDepthDecrement(vo.getRoot());
+		}
+		return bCheck;
+		
 	}	   
    
 }

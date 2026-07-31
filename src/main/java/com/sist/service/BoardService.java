@@ -11,5 +11,6 @@ public interface BoardService {
 	  public BoardVO boardDetailData(int no);
 	  // 답변하기 ===> Transaction
 	  public void boardReplyInsert(int pno,BoardVO vo);
+	  public boolean boardDelete(int no,String pwd);
 	 
 }
