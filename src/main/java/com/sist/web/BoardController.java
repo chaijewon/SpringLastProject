@@ -40,7 +40,7 @@ public class BoardController {
 	   model.addAttribute("totalpage", totalpage);
 	   model.addAttribute("count", count);
 	   model.addAttribute("today", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-	   
+	   model.addAttribute("msg", "관리자 삭제한 게시물입니다");
 	   model.addAttribute("main_jsp", "../board/list.jsp");
 	   return "main/main";
    }

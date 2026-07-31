@@ -127,6 +127,7 @@ public class BoardServiceImpl implements BoardService{
 	@Transactional
 	public boolean boardDelete(int no, String pwd) {
 		// TODO Auto-generated method stub
+		
 		boolean bCheck=false;
 		BoardVO vo=mapper.boardInfoData(no);
 		String db_pwd=mapper.boardGetPassword(no);
@@ -149,6 +150,7 @@ public class BoardServiceImpl implements BoardService{
 			
 			mapper.boardDepthDecrement(vo.getRoot());
 		}
+		
 		return bCheck;
 		
 	}	   

@@ -46,7 +46,12 @@ h3 {
           </c:forEach>
           <img src="../board/re_icon.png">
          </c:if>
-         <a href="../board/detail.do?no=${vo.no }">${vo.subject }</a>
+         <c:if test="${vo.subject!=msg }">
+          <a href="../board/detail.do?no=${vo.no }">${vo.subject }</a>
+         </c:if>
+         <c:if test="${vo.subject==msg }">
+          <span style="color:gray">${vo.subject }</span>
+         </c:if>
          &nbsp; <c:if test="${vo.dbday==today }">
                  <sup><img src="../board/new.gif"></sup>
                 </c:if>
