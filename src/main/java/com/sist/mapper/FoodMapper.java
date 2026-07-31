@@ -3,6 +3,7 @@ import java.util.*;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.sist.vo.*;
 public interface FoodMapper {
@@ -24,9 +25,20 @@ public interface FoodMapper {
   @Select("SELECT CEIL(COUNT(*)/12.0) FROM food")
   public int foodTotalPage();
   
+  @Update("UPDATE food SET "
+		 +"hit=hit+1 "
+		 +"WHERE no=#{no}")
+  public void foodHitIncrement(int no);
+  
   @Select("SELECT no,poster,name,address,time,price,score,theme,"
 		 +"content,parking "
 		 +"FROM food "
 		 +"WHERE no=#{no}")
   public FoodVO foodDetailData(int no);
+  
+  @Select("SELECT no,name,hit,rownum "
+		 +"FROM (SELECT no,name,hit "
+		 +"FROM food ORDER BY hit DESC) "
+		 +"WHERE rownum<=7")
+  public List<FoodVO> foodHit7Data();
 }

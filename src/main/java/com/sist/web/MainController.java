@@ -70,6 +70,8 @@ public class MainController {
 	   model.addAttribute("cList", cList);
 	   model.addAttribute("size", cList.size());
 	   
+	   
+	   
 	   return "main/main";
    }
 }

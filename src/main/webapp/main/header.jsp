@@ -11,11 +11,11 @@
   <div class="container-fluid">
     <div class="navbar-header">
     
-      <a class="navbar-brand" href="#">Spring기타과정</a>
+      <a class="navbar-brand" href="../main/main.do">Spring기타과정</a>
     </div>
     
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="../main/main.do">Home</a></li>
       <li><a href="#">스토어</a></li>
       <li><a href="../board/list.do">답변형 게시판</a></li>
     </ul>

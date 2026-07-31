@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FoodServiceImpl implements FoodService{
     private final FoodMapper mapper;
-    // 생성자를 이용해서 구현된 mapper클래스릐 주소 받기 => @Autowired포함 
+    
 
 	@Override
 	public List<FoodVO> foodListData(int start, int end) {
@@ -30,7 +30,14 @@ public class FoodServiceImpl implements FoodService{
 	@Override
 	public FoodVO foodDetailData(int no) {
 		// TODO Auto-generated method stub
+		mapper.foodHitIncrement(no);
 		return mapper.foodDetailData(no);
+	}
+
+	@Override
+	public List<FoodVO> foodHit7Data() {
+		// TODO Auto-generated method stub
+		return mapper.foodHit7Data();
 	}
     
     
