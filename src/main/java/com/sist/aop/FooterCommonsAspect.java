@@ -1,6 +1,8 @@
 package com.sist.aop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -65,5 +67,16 @@ public class FooterCommonsAspect {
 					   RequestContextHolder.getRequestAttributes()).getRequest();
 	   List<FoodVO> fList=fService.foodHit7Data();
 	   request.setAttribute("fList", fList);
+   }
+   @Around("execution(* com.sist.web.*Controller.*(..))")
+   public Object log(ProceedingJoinPoint jp)
+   throws Throwable
+   {
+	   // 로그 파일 
+	   Object obj=null;
+	   System.out.println("사용자 요청:"+jp.getSignature().getName());
+	   obj=jp.proceed();
+	   System.out.println("사용자 요청 완료:"+jp.getSignature().getName());
+	   return obj;
    }
 }
